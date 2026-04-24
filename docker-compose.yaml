@@ -1,0 +1,162 @@
+services:
+
+  #######################################
+  #                  APP                #
+  #######################################
+
+  app-app:
+    image: app-app
+    build:
+      context: .
+      dockerfile: docker/app-dockerfile
+    hostname: app-app
+    container_name: app_app
+    ports:
+      - "0.0.0.0:8081:80"
+    env_file:
+      - .env
+    volumes:
+      - ./configs/app/nginx.conf:/etc/nginx/nginx.conf
+      - ./configs/app/app.conf:/etc/nginx/sites-enabled/app.conf
+      - ./logs/app/:/var/log/nginx/
+      - ./logs/app/nginx/:/var/log/nginx/
+      - ./logs/app/laravel/:/var/www/html/storage/logs/
+    depends_on:
+      - app-db
+    networks:
+      - app_network
+
+  #######################################
+  #               HORIZON               #
+  #######################################
+
+  app-horizon:
+    image: app-php
+    build:
+      context: .
+      dockerfile: docker/php-dockerfile
+      target: backend
+    hostname: app-horizon
+    container_name: app_horizon
+    command: php artisan horizon
+    volumes:
+      - ./logs/horizon/:/var/www/html/storage/logs
+    env_file:
+      - .env
+    depends_on:
+      - app-db
+      - app-redis
+    networks:
+      - app_network
+
+  #######################################
+  #                PULSE                #
+  #######################################
+
+  app-pulse:
+    image: app-php
+    build:
+      context: .
+      dockerfile: docker/php-dockerfile
+      target: backend
+    hostname: app-pulse
+    container_name: app_pulse
+    command: php artisan pulse:check
+    volumes:
+      - ./logs/pulse/:/var/www/html/storage/logs
+    env_file:
+      - .env
+    depends_on:
+      - app-db
+      - app-redis
+    networks:
+      - app_network
+
+  #######################################
+  #                QUEUE                #
+  #######################################
+
+  app-queue:
+    image: app-php
+    build:
+       context: .
+       dockerfile: docker/php-dockerfile
+       target: backend
+    hostname: app-queue
+    container_name: app_queue
+    command: php artisan queue:work --queue="default,callback,notification,sms,order"
+    volumes:
+      - ./logs/queue/:/var/www/html/storage/logs
+    env_file:
+      - .env
+    depends_on:
+      - app-db
+      - app-redis
+    networks:
+      - app_network
+
+  #######################################
+  #              SCHEDULE               #
+  #######################################
+
+  app-schedule:
+    image: app-php
+    build:
+      context: .
+      dockerfile: docker/php-dockerfile
+      target: backend
+    hostname: app-schedule
+    container_name: app_schedule
+    command: php artisan schedule:work
+    volumes:
+      - ./logs/schedule/:/var/www/html/storage/logs
+    env_file:
+      - .env
+    depends_on:
+      - app-db
+      - app-redis
+    networks:
+      - app_network
+
+  #######################################
+  #                  DB                 #
+  #######################################
+
+  app-db:
+    image: mysql:8.0
+    hostname: app-db
+    container_name: app_db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_TIMEZONE: Europe/Moscow
+    volumes:
+       - ./db/app_db_data/:/var/lib/mysql
+       - ./db/init/mysql/:/docker-entrypoint-initdb.d/
+    networks:
+      - app_network
+
+  #######################################
+  #                REDIS                #
+  #######################################
+
+  app-redis:
+    image: redis:7
+    hostname: app-redis
+    container_name: app_redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./configs/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./db/redis_data/:/data/
+    networks:
+      - app_network
+
+  #######################################
+  #              NETWORKS               #
+  #######################################
+
+networks:
+  app_network:
+    name: app_network

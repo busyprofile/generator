@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Services\Order\Features\OrderDetailProvider\Values;
+
+use App\Services\Money\Currency;
+use App\Services\Money\Money;
+
+class Detail
+{
+    public function __construct(
+        public ?int     $id,
+        public ?int     $userID,
+        public ?int     $paymentGatewayID,
+        public ?int     $userDeviceID,
+        public Money    $dailyLimit,
+        public Money    $currentDailyLimit,
+        public Currency $currency,
+        public Money    $exchangePrice,
+        public Money    $totalProfit,
+        public Money    $serviceProfit,
+        public Money    $merchantProfit,
+        public Money    $traderProfit,
+        public Money    $teamLeaderProfit,
+        public float    $traderCommissionRate,
+        public float    $teamLeaderCommissionRate,
+        public Money    $traderPaidForOrder,
+        public Gateway  $gateway,
+        public Trader   $trader,
+        public Money    $amount,
+        public ?array   $externalRequisites = null, // Реквизиты от внешних провайдеров
+        public ?int     $providerId = null, // provider_id из БД (таблица providers)
+        public ?int     $providerTerminalId = null, // provider_terminal_id из БД (таблица provider_terminals)
+        public ?string  $providerOrderId = null, // ID сделки в системе провайдера
+    )
+    {}
+}

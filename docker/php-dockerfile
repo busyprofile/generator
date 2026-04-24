@@ -1,0 +1,53 @@
+# ::::::::::::::::::::::::::::::::::::::::::::::::
+# :::::::::::::::: Stage 1: BUILD ::::::::::::::::
+# ::::::::::::::::::::::::::::::::::::::::::::::::
+FROM php:8.3-fpm AS builder
+
+### Установка системных зависимостей
+RUN apt-get update && apt-get install -y \
+    git unzip libpq-dev libzip-dev zip curl \
+    libpng-dev libjpeg-dev libfreetype6-dev libgmp-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql zip bcmath gmp gd pcntl \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    # установка Node.js 22.x
+    && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs
+
+### Установка Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
+
+### Копирование исходников laravel
+COPY ./src/ ./
+
+### Установка PHP-зависимостей и прочее
+RUN composer install --no-dev --optimize-autoloader
+
+RUN php artisan key:generate
+RUN php artisan storage:link
+
+# ::::::::::::::::::::::::::::::::::::::::::::::::
+# ::::::::::::::: Stage 2: RUNTIME :::::::::::::::
+# ::::::::::::::::::::::::::::::::::::::::::::::::
+FROM php:8.3-fpm AS backend
+
+### Установка системных зависимостей
+RUN apt-get update && apt-get install -y \
+    libpq-dev libzip-dev \
+    libpng-dev libjpeg-dev libfreetype6-dev libgmp-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql zip bcmath gmp gd pcntl \
+    && pecl install redis \
+    && docker-php-ext-enable redis
+
+# RUN apt install -y procps
+
+WORKDIR /var/www/html/
+
+COPY --from=builder /var/www/html ./
+
+RUN mkdir -p storage/logs
+RUN chmod -R 777 /var/www/html/storage/logs/

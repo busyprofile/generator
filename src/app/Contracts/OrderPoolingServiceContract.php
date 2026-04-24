@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Contracts;
+
+use App\Http\Requests\API\H2H\Order\StoreRequest;
+use Illuminate\Http\JsonResponse;
+
+interface OrderPoolingServiceContract
+{
+    /**
+     * Обрабатывает запрос на создание сделки через OrderPooling
+     */
+    public function processOrderPooling(StoreRequest $request): JsonResponse;
+}

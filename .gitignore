@@ -1,0 +1,65 @@
+.env
+db/methodpay_db_data/
+logs/app/
+logs/horizon/
+logs/pulse/
+logs/queue/
+logs/schedule/
+
+# src entries (from Laravel submodule)
+src/vendor
+src/node_modules
+src/public/storage
+src/storage/*.key
+src/.phpunit.result.cache
+src/Homestead.yaml
+src/Homestead.json
+src/.vagrant
+src/.idea
+src/.phpunit.cache
+src/.phpunit.result.cache
+
+# Laravel caches
+src/bootstrap/cache/*.php
+src/bootstrap/ssr
+
+# NPM / Yarn logs
+src/npm-debug.log
+src/yarn-debug.log
+src/yarn-error.log
+src/pnpm-debug.log
+
+# Node build outputs
+src/public/js
+src/public/css
+src/public/hot
+src/public/mix-manifest.json
+
+# Vite (if used instead of Mix)
+src/public/build
+src/.vite
+src/vite.config.timestamp-*.json
+
+# IDEs & OS
+src/.vscode
+src/.idea
+src/*.sublime-project
+src/*.sublime-workspace
+src/.DS_Store
+src/Thumbs.db
+.DS_Store
+
+# Testing
+src/coverage/
+src/.phpunit.cache
+
+# Logs
+src/*.log
+src/storage/logs/*.log
+
+# Misc
+src/*.pyc
+src/*.swp
+src/*.bak
+src/*.tmp
+src/venvphp/

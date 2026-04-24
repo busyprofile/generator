@@ -1,0 +1,795 @@
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* PrimeVue основные стили */
+.pi {
+    font-family: 'primeicons', sans-serif !important;
+}
+
+:root {
+    /* ── Синяя тёмная тема (zinc + blue) ── */
+    --background: #09090b;
+    --foreground: #fff;
+    --card: #18181b;
+    --card-foreground: #fff;
+    --popover: #18181b;
+    --popover-foreground: #fff;
+    --primary: #43E3F4;
+    --primary-ch: 0.87 0.12 194;
+    --primary-foreground: #062830;
+    --secondary: #27272a;
+    --secondary-foreground: #fff;
+    --muted: #27272a;
+    --muted-foreground: #a1a1aa;
+    --accent: #3f3f46;
+    --accent-foreground: #fff;
+    --destructive: #c5222a;
+    --destructive-ch: 0.55 0.22 25;
+    --destructive-foreground: #fff;
+    --border: #27272a;
+    --input: #27272a;
+    --ring: #43E3F4;
+    --sidebar: #09090b;
+    --sidebar-foreground: #fff;
+    --sidebar-primary: #43E3F4;
+    --sidebar-primary-foreground: #062830;
+    --sidebar-accent: #27272a;
+    --sidebar-accent-foreground: #fff;
+    --sidebar-border: #27272a;
+    --sidebar-ring: #43E3F4;
+    --radius: 0.375rem;
+
+    /* ── Hover состояния ── */
+    --surface-hover: hsla(0, 0%, 100%, .03);
+    --menu-header-hover: #43E3F4;
+    --menu-item-hover: #27272a;
+
+    /* ── PrimeVue v4: cyan палитра primary ── */
+    --p-primary-50:  #ecfeff;
+    --p-primary-100: #cffafe;
+    --p-primary-200: #a5f3fc;
+    --p-primary-300: #67e8f9;
+    --p-primary-400: #43E3F4;
+    --p-primary-500: #22d3ee;
+    --p-primary-600: #06b6d4;
+    --p-primary-700: #0891b2;
+    --p-primary-800: #0e7490;
+    --p-primary-900: #155e75;
+    --p-primary-950: #083344;
+
+    /* ── Совместимость с legacy PrimeVue CSS ── */
+    --font-family: "Inter var", sans-serif;
+    --text-color: #fff;
+    --text-color-secondary: #a1a1aa;
+    --primary-color: #43E3F4;
+    --primary-color-text: #062830;
+    --primary-color-hover: #22d3ee;
+    --color-primary-hover: #22d3ee;
+    --color-error: #fca5a5;
+    --surface-ground: #09090b;
+    --surface-section: #18181b;
+    --surface-card: #18181b;
+    --surface-overlay: #18181b;
+    --surface-border: #27272a;
+    --surface-section2: #27272a;
+    --surface-section3: #27272a;
+    --surface-0: #18181b;
+    --surface-50: #27272a;
+    --surface-100: #3f3f46;
+    --surface-200: #52525b;
+    --surface-300: #71717a;
+    --surface-400: #a1a1aa;
+    --surface-500: #d4d4d8;
+    --surface-600: #e4e4e7;
+    --surface-700: #f4f4f5;
+    --surface-800: #fafafa;
+    --surface-900: #f8fafc;
+    --surface-950: #fff;
+    --gray-0: #fff;
+    --gray-50: #fafafa;
+    --gray-100: #f4f4f5;
+    --gray-200: #e4e4e7;
+    --gray-300: #d4d4d8;
+    --gray-400: #a1a1aa;
+    --gray-500: #71717a;
+    --gray-600: #52525b;
+    --gray-700: #3f3f46;
+    --gray-800: #27272a;
+    --gray-900: #18181b;
+    --gray-950: #09090b;
+    --content-padding: 1.125rem;
+    --inline-spacing: 0.5rem;
+    --border-radius: 6px;
+    --focus-ring: none;
+    --maskbg: rgba(0, 0, 0, .4);
+    --highlight-bg: rgba(67, 227, 244, .16);
+    --highlight-text-color: hsla(0, 0%, 100%, .87);
+    --p-anchor-gutter: 2px;
+    --input-overlay-shadow: 0 8px 12px -1px rgba(0, 0, 0, .4), 0 4px 8px -2px rgba(0, 0, 0, .4);
+    --icon-avatar-bg: var(--surface-200, #52525b);
+    --icon-avatar-fg: var(--surface-500, #d4d4d8);
+    --balance-widget-secondary: var(--surface-ground);
+    --frozen-text-color: hsla(0, 0%, 100%, .6);
+    --frozen-amount-color: hsla(0, 0%, 100%, .8);
+    --p-focus-ring-color: var(--primary-color);
+    --p-chip-border-radius: 0.4rem;
+    --p-border-radius-xl: calc(var(--radius) + 4px);
+    --p-card-body-padding: 0rem !important;
+    --p-popover-background: var(--popover);
+    color-scheme: dark;
+}
+
+.dark {
+    /* ── Синяя тёмная тема (zinc + blue) — зеркало :root ── */
+    --background: #09090b;
+    --foreground: #fff;
+    --card: #18181b;
+    --card-foreground: #fff;
+    --popover: #18181b;
+    --popover-foreground: #fff;
+    --primary: #43E3F4;
+    --primary-ch: 0.87 0.12 194;
+    --primary-foreground: #062830;
+    --secondary: #27272a;
+    --secondary-foreground: #fff;
+    --muted: #27272a;
+    --muted-foreground: #a1a1aa;
+    --accent: #3f3f46;
+    --accent-foreground: #fff;
+    --destructive: #c5222a;
+    --destructive-ch: 0.55 0.22 25;
+    --destructive-foreground: #fff;
+    --border: #27272a;
+    --input: #27272a;
+    --ring: #43E3F4;
+    --sidebar: #09090b;
+    --sidebar-foreground: #fff;
+    --sidebar-primary: #43E3F4;
+    --sidebar-primary-foreground: #062830;
+    --sidebar-accent: #27272a;
+    --sidebar-accent-foreground: #fff;
+    --sidebar-border: #27272a;
+    --sidebar-ring: #43E3F4;
+
+    /* ── Hover состояния ── */
+    --surface-hover: hsla(0, 0%, 100%, .03);
+    --menu-header-hover: #43E3F4;
+    --menu-item-hover: #27272a;
+
+    /* ── PrimeVue v4: cyan палитра primary ── */
+    --p-primary-50:  #ecfeff;
+    --p-primary-100: #cffafe;
+    --p-primary-200: #a5f3fc;
+    --p-primary-300: #67e8f9;
+    --p-primary-400: #43E3F4;
+    --p-primary-500: #22d3ee;
+    --p-primary-600: #06b6d4;
+    --p-primary-700: #0891b2;
+    --p-primary-800: #0e7490;
+    --p-primary-900: #155e75;
+    --p-primary-950: #083344;
+
+    /* ── Совместимость с legacy PrimeVue CSS ── */
+    --primary-color: #43E3F4;
+    --primary-color-hover: #22d3ee;
+    --surface-ground: #09090b;
+    --surface-card: #18181b;
+    --surface-border: #27272a;
+    --surface-section: #18181b;
+    --surface-section2: #27272a;
+    --surface-section3: #27272a;
+    --text-color: #fff;
+    --text-color-secondary: #a1a1aa;
+    --p-chip-border-radius: 0.4rem;
+}
+
+/* Общие стили для всего приложения */
+body {
+    background-color: var(--surface-ground);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Установка темной темы */
+body.dark {
+    background-color: var(--surface-ground);
+    color: var(--text-color);
+}
+
+/* .dark .p-component {
+    color: var(--text-color);
+} */
+
+/* Базовые компоненты карточек */
+.p-card {
+    background: var(--surface-card);
+    color: var(--text-color);
+    box-shadow: none !important;
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.p-card .p-card-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.p-card .p-card-subtitle {
+    font-weight: 400;
+    color: var(--text-color-secondary);
+    margin-bottom: 1rem;
+}
+
+.p-card .p-card-content {
+    padding: 0;
+}
+
+/* Таблицы */
+.p-datatable {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--surface-card);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-footer {
+    background: var(--surface-section);
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    background: var(--surface-section);
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    border-width: 0 0 1px 0;
+    border-color: var(--surface-border);
+    font-weight: 600;
+    text-align: left;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    background: var(--surface-card);
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.75rem 1rem;
+    border-width: 0 0 1px 0;
+    border-color: var(--surface-border);
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+    background: var(--surface-ground);
+}
+
+.p-datatable .p-paginator {
+    padding: 0.5rem 1rem;
+    background: var(--surface-card);
+}
+
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr.p-row-odd {
+    background: var(--surface-ground);
+}
+
+/* Статусы в таблице */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.status-badge.success {
+    background-color: #16a34a;
+}
+
+.status-badge.pending {
+    background-color: rgba(67, 227, 244, 0.15);
+    color: #43E3F4;
+}
+
+.status-badge.fail {
+    background-color: #ef4444;
+}
+
+/* Кнопки */
+.dark .p-button {
+    
+    border: none !important;
+    
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    border-radius: var(--border-radius);
+
+    background: var(--p-button-text-primary-active-background) !important;
+    border-color: var(--p-button-text-primary-color) !important;
+    color: var(--p-button-text-primary-color) !important;
+}
+
+.dark .p-button:enabled:hover {
+     background: var(--p-menu-item-focus-background) !important;
+      color: #ffffff !important;
+}
+
+.p-button {
+    
+    border: none !important;
+ 
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    border-radius: var(--border-radius) !important;
+
+    background: var(--p-button-text-primary-active-background) !important;
+    border-color: var(--p-button-text-primary-color) !important;
+    color: var(--p-button-text-primary-color) !important;
+}
+
+.p-button:enabled:hover {
+     background: var(--p-menu-item-focus-background) !important;
+      color: #000000 !important;
+}
+
+
+
+.p-button.p-button-outlined {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid;
+}
+
+.p-button.p-button-text {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: transparent;
+}
+
+/* Поля ввода */
+.p-inputtext {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius);
+    background: var(--surface-card);
+    color: var(--text-color);
+    border: 1px solid var(--surface-border);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .p-inputtext {
+    background: var(--p-inputtext-background);
+    color: var(--text-color);
+    border-color: var(--surface-border);
+}
+
+.p-input-icon-left > .p-inputtext {
+    padding-left: 2.5rem;
+}
+
+/* Тэги и бейджи */
+.p-tag {
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+}
+
+.p-tag.p-tag-success {
+   background: var(--p-button-text-primary-active-background) !important;
+    border-color: var(--p-button-text-primary-color) !important;
+}
+
+.p-tag.p-tag-warning {
+    background-color: rgba(67, 227, 244, 0.12);
+    color: #43E3F4;
+}
+
+.p-tag.p-tag-danger {
+    background-color: #c5222a3d;
+    color: #ff4b4b;
+}
+
+/* Модальные окна */
+.p-dialog {
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background: var(--surface-card);
+    transition: background-color 0.3s ease;
+}
+
+.p-dialog .p-dialog-header {
+    border-bottom: 1px solid var(--surface-border);
+    padding: 1.25rem;
+    background: var(--surface-card);
+    color: var(--text-color);
+}
+
+.p-dialog .p-dialog-content {
+    padding: 1.25rem;
+    background: var(--surface-card);
+    color: var(--text-color);
+}
+
+.p-dialog .p-dialog-footer {
+    border-top: 1px solid var(--surface-border);
+    padding: 1.25rem;
+    background: var(--surface-card);
+}
+
+/* Скелетон загрузки */
+.p-skeleton {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.dark .p-skeleton {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Выпадающий список */
+.p-dropdown {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-dropdown-panel {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background: var(--surface-ground);
+}
+
+/* Меню */
+.p-menubar {
+    background: var(--surface-card);
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--surface-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
+    padding: 0.75rem 1rem;
+    color: var(--text-color);
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover {
+    background: var(--surface-ground);
+}
+
+/* Боковое меню */
+.p-sidebar {
+    background: var(--surface-card);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.p-sidebar-header {
+    padding: 1rem;
+    background: var(--surface-section);
+    border-bottom: 1px solid var(--surface-border);
+}
+
+/* Улучшение дизайна дашборда */
+.dashboard-card {
+    background: var(--surface-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .dashboard-card {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.dashboard-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.dashboard-label {
+    font-size: 0.875rem;
+    color: var(--text-color-secondary);
+}
+
+/* Общий контейнер */
+.dashboard-container {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Улучшение графиков */
+.chart-container {
+    height: 300px;
+    position: relative;
+}
+
+.dark .chart-container {
+    color: var(--text-color);
+}
+
+/* Хлебные крошки */
+.p-breadcrumb {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0;
+}
+
+.p-breadcrumb .p-breadcrumb-list li .p-menuitem-link {
+    color: var(--text-color-secondary);
+}
+
+.p-breadcrumb .p-breadcrumb-list li .p-menuitem-link:hover {
+    color: var(--primary-color);
+}
+
+/* Переопределение внутренних переменных PrimeVue Nora — акцентный циан */
+:root,
+.dark {
+    /* Первичный цвет — используется всеми компонентами */
+    --p-primary-color: #43E3F4;
+    --p-primary-contrast-color: #062830;
+    --p-primary-hover-color: #22d3ee;
+    --p-primary-active-color: #06b6d4;
+
+    /* Highlight (выделение в select, listbox, autocomplete и др.) */
+    --p-highlight-background: rgba(67, 227, 244, 0.16);
+    --p-highlight-focus-background: rgba(67, 227, 244, 0.24);
+    --p-highlight-color: #43E3F4;
+    --p-highlight-focus-color: #43E3F4;
+
+    /* Select / Dropdown */
+    --p-select-option-selected-background: rgba(67, 227, 244, 0.16);
+    --p-select-option-selected-color: #43E3F4;
+    --p-select-option-focus-background: rgba(67, 227, 244, 0.1);
+    --p-select-focus-border-color: #43E3F4;
+    --p-select-focus-ring-color: rgba(67, 227, 244, 0.25);
+
+    /* MultiSelect */
+    --p-multiselect-option-selected-background: rgba(67, 227, 244, 0.16);
+    --p-multiselect-option-selected-color: #43E3F4;
+    --p-multiselect-focus-border-color: #43E3F4;
+
+    /* Listbox */
+    --p-listbox-option-selected-background: rgba(67, 227, 244, 0.16);
+    --p-listbox-option-selected-color: #43E3F4;
+    --p-listbox-focus-border-color: #43E3F4;
+
+    /* Checkbox */
+    --p-checkbox-checked-background: #43E3F4;
+    --p-checkbox-checked-border-color: #43E3F4;
+    --p-checkbox-checked-color: #062830;
+    --p-checkbox-focus-ring-color: rgba(67, 227, 244, 0.25);
+
+    /* RadioButton */
+    --p-radiobutton-checked-background: #43E3F4;
+    --p-radiobutton-checked-border-color: #43E3F4;
+    --p-radiobutton-checked-color: #062830;
+
+    /* InputText focus */
+    --p-inputtext-focus-border-color: #43E3F4;
+    --p-inputtext-focus-ring-color: rgba(67, 227, 244, 0.25);
+
+    /* Paginator */
+    --p-paginator-page-selected-background: #43E3F4;
+    --p-paginator-page-selected-color: #062830;
+    --p-paginator-page-selected-border-color: #43E3F4;
+    --p-paginator-nav-button-selected-background: #43E3F4;
+    --p-paginator-nav-button-selected-color: #062830;
+}
+
+.p-paginator .p-paginator-page.p-highlight {
+    background: #43E3F4 !important;
+    color: #062830 !important;
+    border-color: #43E3F4 !important;
+}
+
+.p-paginator .p-paginator-page:not(.p-highlight):hover {
+    background: var(--surface-ground);
+}
+
+/* Иконки */
+.p-icon {
+    font-size: 1rem;
+}
+
+/* Кнопка обновления данных */
+.refresh-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+/* Оптимизация карточек для темного режима */
+.dark .p-card {
+    background-color: var(--surface-card);
+    color: var(--text-color);
+    border: 1px solid var(--surface-border);
+}
+
+.dark .p-card .p-card-title {
+    color: var(--text-color);
+}
+
+.dark .p-card .p-card-body {
+    background-color: var(--surface-card);
+}
+
+.dark .p-card .p-card-content {
+    background-color: var(--surface-card);
+}
+
+/* Настройка цветов графиков для темной темы */
+.dark .p-chart {
+    background-color: var(--surface-card);
+}
+
+/* Переключатель темы */
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-switch:hover {
+    background-color: var(--surface-ground);
+    border-radius: var(--border-radius);
+} 
+
+.dark .active-menu-item {
+   background: var(--p-menu-item-focus-background); 
+   border-radius: var(--p-menu-item-border-radius);
+       color: var(--p-menu-item-focus-color);
+}
+ .active-menu-item {
+   
+   border-radius: var(--p-menu-item-border-radius);
+   
+       color: var(--p-menu-item-focus-color);
+    background: var(--p-menu-item-focus-background);
+}
+.p-menu.p-component.w-full{
+    background: none !important;
+    color: var(--p-menu-color) !important;
+    border: none !important; 
+    min-width: 0 !important;
+}
+
+/* Стили для меню профиля */
+.p-menu.p-component.p-menu-overlay {
+    background: var(--p-menu-background) !important;
+    color: var(--p-menu-color) !important;
+    border: 1px solid var(--p-menu-border-color) !important;
+    width: auto !important;
+    min-width: 250px !important;
+    padding: 0.5rem !important;
+}
+
+.p-menu-list {
+padding: 0 !important;
+
+}
+.p-menu-submenu-label {
+    font-size: 0.9rem;
+        padding-top: 1.4rem !important;
+}
+
+.p-menu-submenu-label:first-child {
+    padding-top: 0 !important;
+}
+
+.p-menu-submenu-label:nth-last-child(1) {
+    font-size: 0.9rem;
+    padding-top: 0.4rem !important;
+}
+.p-select {
+background-color: var(--surface-card) !important;
+    border: 1px solid var(--surface-border)  !important;
+    border-radius: 0.5rem  !important;
+    font-size: 0.875rem  !important;
+
+}
+.p-drawer-top .p-drawer {
+    height: auto !important;
+}
+
+/* Override dark theme styles specifically for the danger button */
+.dark .p-button.p-button-danger {
+     background-color: #c5222a3d !important;
+    color: #ff4b4b !important;
+   
+    border-color: #dc2626 !important;
+}
+
+.p-button.p-button-danger {
+     background-color: #c5222a3d !important;
+    color: #ff4b4b !important;
+   
+    border-color: #dc2626 !important;
+}
+
+.dark\:bg-surface-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: color-mix(in srgb, var(--p-surface-700) calc(20% * var(--tw-bg-opacity)), transparent);
+}
+
+/* Optional: Override hover styles if needed */
+/*
+.dark .p-button.p-button-danger:hover {
+    background: var(--p-button-danger-hover-background) !important;
+    border-color: var(--p-button-danger-hover-border-color) !important;
+    color: var(--p-button-danger-hover-color) !important;
+}
+*/
+ .p-tag-rounded {
+    border-radius: var(--p-border-radius-xl);
+}
+.p-dialog-header {
+    border-radius: 1rem !important;
+}
+
+ 
+.p-dialog-content {
+    border-radius: 1rem !important;
+}
+
+input {
+    background-color: var(--surface-section3) !important;
+}
+select {
+    background-color: var(--surface-section3) !important;
+}
+.p-multiselect {
+ background-color: var(--surface-section3) !important;
+border-color: var(--surface-border) !important;
+}
+.p-select {
+ background-color: var(--surface-section3) !important;
+ 
+}
+
+@media screen and (max-width: 976px) {
+    .content-main {
+        margin-bottom: 60px !important;
+    }
+}
+.layout-wrapper {
+    overflow: hidden;
+}
+
+   
